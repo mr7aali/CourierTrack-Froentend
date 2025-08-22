@@ -1,6 +1,7 @@
 import Footer from "@/components/Shared/Footer";
 import Header from "@/components/Shared/Header";
 import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
 import {
   Card,
   CardContent,
@@ -31,7 +32,7 @@ export default function HomePage() {
               Start Tracking
             </Button>
           </Link>
-          <Link href="/demo">
+          <Link href="/auth/register">
             <Button
               variant="outline"
               size="lg"

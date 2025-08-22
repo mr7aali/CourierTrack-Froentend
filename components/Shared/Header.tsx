@@ -1,8 +1,9 @@
 import { Package } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
-
+import { useTranslations } from "next-intl";
 const Header = () => {
+  const t = useTranslations("auth");
   return (
     <header className="border-b bg-white/80 backdrop-blur-sm dark:bg-gray-900/80">
       <div className="container flex items-center justify-between px-4 py-4 mx-auto">
@@ -14,7 +15,7 @@ const Header = () => {
         </Link>
         <div className="flex items-center space-x-4">
           <Link href="/auth/login">
-            <Button variant="ghost">Login</Button>
+            <Button variant="ghost">Login {t("login.signIn")}</Button>
           </Link>
           <Link href="/auth/register">
             <Button>Get Started</Button>
