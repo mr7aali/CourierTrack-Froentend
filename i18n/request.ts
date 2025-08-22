@@ -1,8 +1,8 @@
+import { getLocalLang } from "@/app/actions";
 import { getRequestConfig } from "next-intl/server";
 
 export default getRequestConfig(async () => {
-  // Static for now, we'll change this later
-  const locale = "en";
+  const locale = await getLocalLang();
 
   return {
     locale,

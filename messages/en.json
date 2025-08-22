@@ -92,7 +92,8 @@
       "signUp": "Sign up",
       "or": "or",
       "continueWithGoogle": "Continue with Google",
-      "continueWithFacebook": "Continue with Facebook"
+      "continueWithFacebook": "Continue with Facebook",
+      "getStarted": "Get Started"
     },
     "register": {
       "title": "Create Account",
@@ -326,5 +327,34 @@
     "logout": "Are you sure you want to logout?",
     "discardChanges": "Are you sure you want to discard your changes?",
     "cancelOperation": "Are you sure you want to cancel this operation?"
+  },
+  "homePage": {
+    "title": "Modern Courier & Parcel Management",
+    "subTitle": "Streamline your logistics operations with real-time tracking, automated routing, and comprehensive management tools for customers, agents, and administrators.",
+    "StartTracking": "Start Tracking",
+    "ViewDemo": "View Demo",
+    "FeaturesTitle": "Powerful Features for Every User",
+
+    "CustomerPortal": "Customer Portal",
+    "CustomerPortalSubTitle": "Book parcels, track deliveries, and manage your shipping history",
+    "DeliveryAgent": "Delivery Agent",
+    "DeliveryAgentTitle": "Manage deliveries with optimized routes and status updates",
+    "AdminDashboard": "Admin Dashboard",
+    "AdminDashboardTitle": "Comprehensive analytics and management tools",
+
+    "c1": "Easy parcel booking",
+    "c2": "Real-time tracking",
+    "c3": "Delivery history",
+    "c4": "COD & prepaid options",
+
+    "d1": "Assigned parcel view",
+    "d2": "Status updates",
+    "d3": "Route optimization",
+    "d4": "QR code scanning",
+
+    "a1": "Performance metrics",
+    "a2": "Agent assignment",
+    "a3": "User management",
+    "a4": "Report generation"
   }
 }
