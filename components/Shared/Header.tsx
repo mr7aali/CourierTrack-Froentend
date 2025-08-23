@@ -1,5 +1,5 @@
 "use client";
-import { Package } from "lucide-react";
+import { Package, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { useTranslations } from "next-intl";
@@ -12,6 +12,7 @@ const Header = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [locale, setLocale] = useState(searchParams.get("locale") || "en");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const updateLocale = async () => {
@@ -29,18 +30,21 @@ const Header = () => {
   };
 
   return (
-    <header className="border-b bg-white/80 backdrop-blur-sm dark:bg-gray-900/80">
+    <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur-sm dark:bg-gray-900/80">
       <div className="container flex items-center justify-between px-4 py-4 mx-auto">
+        {/* Logo */}
         <Link
           href={`/?locale=${locale}`}
           className="flex items-center space-x-2"
         >
           <Package className="w-6 h-6 text-blue-600 sm:w-8 sm:h-8" />
-          <span className="text-[20px] font-bold text-gray-900 sm:text-2xl dark:text-white">
+          <span className="text-lg font-bold text-gray-900 sm:text-xl md:text-2xl dark:text-white">
             CourierTrack
           </span>
         </Link>
-        <div className="flex items-center space-x-4">
+
+        {/* Desktop Nav */}
+        <div className="items-center hidden space-x-4 md:flex">
           <Button variant="ghost" onClick={toggleLocale}>
             {locale === "en" ? "বাংলা" : "English"}
           </Button>
@@ -51,7 +55,45 @@ const Header = () => {
             <Button>{t("login.getStarted")}</Button>
           </Link>
         </div>
+
+        {/* Mobile Hamburger */}
+        <div className="md:hidden">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
+          </Button>
+        </div>
       </div>
+
+      {/* Mobile Dropdown */}
+      {menuOpen && (
+        <div className="px-4 pb-4 space-y-3 bg-white border-t md:hidden dark:bg-gray-900">
+          <Button
+            variant="ghost"
+            onClick={toggleLocale}
+            className="justify-start w-full"
+          >
+            {locale === "en" ? "বাংলা" : "English"}
+          </Button>
+          <Link href={`/auth/login?locale=${locale}`} className="block">
+            <Button variant="ghost" className="justify-start w-full">
+              {t("login.signIn")}
+            </Button>
+          </Link>
+          <Link href={`/auth/register?locale=${locale}`} className="block">
+            <Button className="justify-start w-full">
+              {t("login.getStarted")}
+            </Button>
+          </Link>
+        </div>
+      )}
     </header>
   );
 };

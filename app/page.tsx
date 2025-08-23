@@ -59,7 +59,7 @@ export default function HomePage() {
             <CardContent>
               <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
                 {[1, 2, 3, 4].map((Item) => (
-                  <li>• {t(`c${Item}`)}</li>
+                  <li key={Item}>• {t(`c${Item}`)}</li>
                 ))}
               </ul>
             </CardContent>
@@ -74,7 +74,7 @@ export default function HomePage() {
             <CardContent>
               <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
                 {[1, 2, 3, 4].map((Item) => (
-                  <li>• {t(`d${Item}`)}</li>
+                  <li key={Item}>• {t(`d${Item}`)}</li>
                 ))}
               </ul>
             </CardContent>
@@ -89,7 +89,7 @@ export default function HomePage() {
             <CardContent>
               <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
                 {[1, 2, 3, 4].map((Item) => (
-                  <li>• {t(`a${Item}`)}</li>
+                  <li key={Item}>• {t(`a${Item}`)}</li>
                 ))}
               </ul>
             </CardContent>
