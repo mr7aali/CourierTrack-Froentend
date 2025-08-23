@@ -1,11 +1,12 @@
 "use client";
-import { Package, Menu, X } from "lucide-react";
+import { Package, Menu, X, Moon, Sun } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { useTranslations } from "next-intl";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { setLocalLang } from "@/app/actions";
+import { useTheme } from "next-themes";
 
 const Header = () => {
   const t = useTranslations("auth");
@@ -13,6 +14,7 @@ const Header = () => {
   const searchParams = useSearchParams();
   const [locale, setLocale] = useState(searchParams.get("locale") || "en");
   const [menuOpen, setMenuOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const updateLocale = async () => {
@@ -27,6 +29,10 @@ const Header = () => {
     const newLocale = locale === "en" ? "bn" : "en";
     setLocale(newLocale);
     router.replace(`/?locale=${newLocale}`);
+  };
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   return (
@@ -45,9 +51,21 @@ const Header = () => {
 
         {/* Desktop Nav */}
         <div className="items-center hidden space-x-4 md:flex">
+          {/* Language Toggle */}
           <Button variant="ghost" onClick={toggleLocale}>
             {locale === "en" ? "বাংলা" : "English"}
           </Button>
+
+          {/* Dark Mode Toggle */}
+          <Button variant="ghost" size="icon" onClick={toggleTheme}>
+            {theme === "dark" ? (
+              <Sun className="w-5 h-5" />
+            ) : (
+              <Moon className="w-5 h-5" />
+            )}
+          </Button>
+
+          {/* Auth Links */}
           <Link href={`/auth/login?locale=${locale}`}>
             <Button variant="ghost">{t("login.signIn")}</Button>
           </Link>
@@ -75,6 +93,7 @@ const Header = () => {
       {/* Mobile Dropdown */}
       {menuOpen && (
         <div className="px-4 pb-4 space-y-3 bg-white border-t md:hidden dark:bg-gray-900">
+          {/* Language Toggle */}
           <Button
             variant="ghost"
             onClick={toggleLocale}
@@ -82,6 +101,22 @@ const Header = () => {
           >
             {locale === "en" ? "বাংলা" : "English"}
           </Button>
+
+          {/* Dark Mode Toggle */}
+          <Button
+            variant="ghost"
+            onClick={toggleTheme}
+            className="justify-start w-full"
+          >
+            {theme === "dark" ? (
+              <Sun className="w-5 h-5 mr-2" />
+            ) : (
+              <Moon className="w-5 h-5 mr-2" />
+            )}
+            {theme === "dark" ? "Light Mode" : "Dark Mode"}
+          </Button>
+
+          {/* Auth Links */}
           <Link href={`/auth/login?locale=${locale}`} className="block">
             <Button variant="ghost" className="justify-start w-full">
               {t("login.signIn")}
