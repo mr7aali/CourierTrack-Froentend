@@ -49,8 +49,8 @@ const Header = () => {
           </span>
         </Link>
 
-        {/* Desktop Nav */}
-        <div className="items-center hidden space-x-4 md:flex">
+        {/* Middle Section: Language + Theme */}
+        <div className="absolute items-center hidden space-x-3 transform -translate-x-1/2 md:flex left-1/2">
           {/* Language Toggle */}
           <Button variant="ghost" onClick={toggleLocale}>
             {locale === "en" ? "বাংলা" : "English"}
@@ -64,8 +64,10 @@ const Header = () => {
               <Moon className="w-5 h-5" />
             )}
           </Button>
+        </div>
 
-          {/* Auth Links */}
+        {/* Right Section: Auth Links */}
+        <div className="items-center hidden space-x-4 md:flex">
           <Link href={`/auth/login?locale=${locale}`}>
             <Button variant="ghost">{t("login.signIn")}</Button>
           </Link>
